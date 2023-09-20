@@ -32,7 +32,7 @@
       <div class="container-fluid head-sub-section" style="background-image: url(<?= BASE_URL ?>assets/images/service-bg.jpg);">
          <h4 class="head-sub-section-heading"><?php echo $data['title']; ?></h4>
          <ul class="breadcurmes">
-         <li><a href="index.php">Home</a> / <a href="services.php">Services</a></li>
+            <li><a href="index.php">Home</a> / <a href="services.php">Services</a></li>
          </ul>
       </div>
    </div>

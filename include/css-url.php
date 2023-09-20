@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/owl.carousel.min.css">
   <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/owl.theme.default.min.css">
 
+
 <meta name="google-site-verification" content="tK6KiULm4p3nwVH-NIbJJWPueFS3AKJbtVArsazyrck" />
 
 <!-- Google tag (gtag.js) -->
