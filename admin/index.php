@@ -94,6 +94,16 @@
           </div>
           </div>
 
+         
+          <div class="box">
+            <div class="media">
+            <span class="inner-sec"><img class="mr-3 box-icon" src="images/icon/cityscape.png" alt="Generic placeholder image"></span>
+            <div class="media-body">
+              <h5>Enquiry</h5>
+              <a href=" micro-query.php"><span>Micro Query</span></a>
+            </div>
+          </div>
+          </div>
           <div class="box">
             <div class="media">
             <span class="inner-sec"><img class="mr-3 box-icon" src="images/icon/cityscape.png" alt="Generic placeholder image"></span>
@@ -263,26 +273,7 @@
               </tr>
             </thead>
             <tbody>
-              <?php
-              $sql6 = "SELECT developer_id, COUNT(*) FROM property_query GROUP BY developer_id";
-              $result = mysqli_query($conn,$sql6);
-              $count = mysqli_num_rows($result);
-               $buildQuery = '';
-              for($i = 0; $i < $count ; $i++){
-              $row = mysqli_fetch_assoc($result);
-              $dev_id = $row['developer_id'];
-              $sql7 = "SELECT name FROM developer WHERE id='$dev_id'";
-              $result1 = mysqli_query($conn,$sql7);
-              $row1 = mysqli_fetch_assoc($result1);
-              $dev_name = $row1['name'];
-               $buildQuery .= '<tr>
-               <td>'.$dev_name.'</td>
-               <td>'.$row['COUNT(*)'].'</td>
-               <td><a href="builder-query.php?id='.$row['developer_id'].'"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-               </tr>';
-              }
-               echo $buildQuery;
-            ?>
+             
             </tbody>
           </table>
          </div>

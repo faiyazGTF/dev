@@ -170,5 +170,14 @@ function getmetapages($type=""){
         return $array;
     }
 }
+function getMicrpagename($conn,$id){
+
+    $getrecords = mysqli_query($conn, "SELECT `name`,page_url FROM `micro_site` WHERE id=".$id."");
+
+    if($getrecords->num_rows >0){
+        $data=mysqli_fetch_assoc($getrecords);
+        return $data;
+    }
+}
 
 ?>
