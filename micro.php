@@ -1,6 +1,7 @@
 <?php include 'include/config.php';
 include 'include/functions.php';
 if(!empty($_GET['page_url'])){
+   
    $checkrecords=  mysqli_query($conn, "SELECT * FROM `micro_site` WHERE page_url='".$_GET['page_url']."'");
    if($checkrecords->num_rows >0){
       $pagedata=mysqli_fetch_assoc($checkrecords);
