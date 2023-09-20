@@ -1,0 +1,201 @@
+$(document).ready(function(){
+	$(document).on('submit','#addamenities', function(e){
+		e.preventDefault(0);
+		var formData = new FormData(this);
+		
+		$.ajax({
+			url : '__ajax.php?action=addamenities',
+			type: "POST",
+			data: formData,
+			dataType: 'json',
+			contentType: false,
+			cache: false,
+			processData: false,
+			enctype: 'multipart/form-data',
+			success : function(resp){
+				var data=JSON.parse(JSON.stringify(resp));
+				if(data.status==3){
+					$('.errors').remove();
+					var keys = Object.keys(data.errors);
+					for (let index = 0; index < keys.length; index++) {
+					   var keynam=keys[index];
+						$('#'+keynam).after('<p class="errors">'+data.errors[keynam]+'<p>');
+							if(index==0){
+								$('#'+keynam).focus();
+							}
+					}
+					alert(data.message);
+		
+				}else if(data.status==1){
+				
+					alert(data.message);
+					window.location.reload();
+
+		
+				}else{
+						window.location.reload();
+						alert(data.message);
+				}
+
+			}
+		});
+		
+	});
+});
+
+
+
+	
+	
+
+
+
+$(document).on('click','.editmicroaminities',function(){
+	var dataid=$(this).attr('dataid');
+
+
+	$.ajax({
+		url : '__ajax.php?action=editmicroaminities',
+		type : 'POST',
+		data : {'dataid' : dataid},
+		success : function(resp){
+			var result=JSON.parse(resp);
+				if(result.status==1){
+					var record=result.data;
+					$('.uploadediimageremovealble').remove();
+					var title=record['title'];
+					var icons=record['icons'];
+					var subtitle=record['subtitle'];
+
+
+			
+						$("#updatetitle").val(title);
+						$('#updateicons option[value='+icons+']').attr('selected','selected');
+						$("#subtitleupdate").val(subtitle);
+					
+					
+			
+					$("#updaemicrobanners").modal('show');
+				}else{
+						alert(result.message);
+				}
+		}
+	});
+
+
+
+	$(document).on('submit','#updateothermicrodataamenities', function(e){
+		e.preventDefault(0);
+		var formData = new FormData(this);
+		formData.append("eid", dataid);
+
+		
+		$.ajax({
+			url : '__ajax.php?action=updateothermicrodataamenities',
+			type: "POST",
+			data: formData,
+			dataType: 'json',
+			contentType: false,
+			cache: false,
+			processData: false,
+			enctype: 'multipart/form-data',
+			success : function(resp){
+				var data=JSON.parse(JSON.stringify(resp));
+				if(data.status==3){
+					$('.errors').remove();
+					var keys = Object.keys(data.errors);
+					for (let index = 0; index < keys.length; index++) {
+					   var keynam=keys[index];
+						$('#'+keynam).after('<p class="errors">'+data.errors[keynam]+'<p>');
+							if(index==0){
+								$('#'+keynam).focus();
+							}
+					}
+					alert(data.message);
+		
+				}else if(data.status==1){
+				
+					alert(data.message);
+					window.location.reload();
+
+		
+				}else{
+						window.location.reload();
+						alert(data.message);
+				}
+
+			}
+		});
+	
+	});
+});
+
+
+
+
+$(document).on('click','.deletefloorplands',function(){
+		var dataid=$(this).attr('dataid');
+		$.ajax({
+			url : '__ajax.php?action=deletemicrogallery',
+			type : 'POST',
+			data : {'dataid' : dataid},
+			success : function(resp){
+					var data=JSON.parse(resp);
+					alert(data.message);
+					if(data.status==1){
+						window.location.reload();
+
+					}
+					
+			}
+		});
+})
+
+
+
+
+
+$(document).ready(function(){
+	$(document).on('submit','#updateamendtiesbanners', function(e){
+		e.preventDefault(0);
+		var formData = new FormData(this);
+		
+		$.ajax({
+			url : '__ajax.php?action=updateamendtiesbanners',
+			type: "POST",
+			data: formData,
+			dataType: 'json',
+			contentType: false,
+			cache: false,
+			processData: false,
+			enctype: 'multipart/form-data',
+			success : function(resp){
+				var data=JSON.parse(JSON.stringify(resp));
+				if(data.status==3){
+					$('.errors').remove();
+					var keys = Object.keys(data.errors);
+					for (let index = 0; index < keys.length; index++) {
+					   var keynam=keys[index];
+						$('#'+keynam).after('<p class="errors">'+data.errors[keynam]+'<p>');
+							if(index==0){
+								$('#'+keynam).focus();
+							}
+					}
+					alert(data.message);
+		
+				}else if(data.status==1){
+				
+					alert(data.message);
+					window.location.reload();
+
+		
+				}else{
+						window.location.reload();
+						alert(data.message);
+				}
+
+			}
+		});
+		
+	});
+});

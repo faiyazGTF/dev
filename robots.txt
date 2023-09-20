@@ -1,0 +1,6 @@
+robots.txt 
+www.seoptimer.com
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Sitemap: http://polarisrealtors.in/
