@@ -113,7 +113,8 @@ function viewtext(modalheading,text){
 
 
 function deleteData(tablename,comparename,id){
-
+	let text = "Are your Sure want to delete Records ?";
+	if (confirm(text) == true) {
 	$.ajax({
 		url : '__delete_record.php?action=deleteData',
 		type : 'POST',
@@ -129,6 +130,7 @@ function deleteData(tablename,comparename,id){
 			}
 		}
 	});
+}
 
 }
 

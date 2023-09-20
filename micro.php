@@ -170,26 +170,28 @@ if(!empty($_GET['page_url'])){
 
      </div>
 
-     <div class="mircosite-form">
+     <form class="mircosite-form">
          <h4 class="top-form-heading">Send us a message</h4>
          <div class="form-group">
             <i class="fa fa-user"></i>
-            <input type="text" class="form-control" id="qSenderName" placeholder="Enter Name">
+
+            <input type="hidden" name="micro_page_id" value="<?= $pagedata['id'] ?>">
+            <input type="text" class="form-control error-name" id="name" name="name" placeholder="Enter Name">
          </div>
          <div class="form-group">
             <i class="fa fa-envelope"></i>
-            <input type="text" class="form-control" id="qEmailID" placeholder="Enter Email ID">
+            <input type="text" class="form-control error-email" id="email" name="email" placeholder="Enter Email ID">
          </div>
          <div class="form-group">
              <i class="fa fa-phone"></i>
-            <input type="text" class="form-control number-only" id="qMobileNo" placeholder="Enter Phone Number">
+            <input type="text" class="form-control number-only error-phone" name="phone" id="phone" placeholder="Enter Phone Number">
          </div>
          <div class="form-group">
             <i class="fa fa-comments-o"></i>
-            <input type="text" class="form-control" id="qMessage" placeholder="Enter Message">
+            <input type="text" class="form-control error-message" id="message" name="message" placeholder="Enter Message">
          </div>
-         <button type="button" class="btnb btn-custom" id="SubmitQuery">Submit Now</button>  
-     </div>
+         <button type="button" class="btnb btn-custom" onclick="micro_formsubmit('.mircosite-form');">Submit Now</button>  
+      </form>
 
 
 
@@ -480,25 +482,26 @@ if(!empty($_GET['page_url'])){
                 <p>Address- C - 214 Third Floor, C Block Sector 63, Noida</p>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-6 right-col">
-                  <div class="contact-us-footer">
+                  <form class="contact-us-footer" id="micro_contact">
+                  <input type="hidden" name="micro_page_id" value="<?= $pagedata['id'] ?>">
                         <div class="form-group">
                             <i class="fa fa-user" aria-hidden="true"></i>
-                          <input type="text" class="form-control" id="qSenderNamefooter" placeholder="Enter Name">
+                          <input type="text" class="form-control error-name" name="name" id="qSenderNamefooter" placeholder="Enter Name">
                         </div>
                         <div class="form-group">
                             <i class="fa fa-envelope"></i>
-                          <input type="text" class="form-control" id="qEmailIDfooter" placeholder="Enter Email ID">
+                          <input type="text" class="form-control error-email" name="email" id="qEmailIDfooter" placeholder="Enter Email ID">
                         </div>   
                         <div class="form-group">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                          <input type="text" class="form-control number-only" id="qMobileNofooter" placeholder="Enter Phone Number">
+                          <input type="text" class="form-control number-only error-phone" name="phone" id="qMobileNofooter" placeholder="Enter Phone Number">
                         </div>
                         <div class="form-group">
                             <i class="fa fa-comments-o"></i>
-                          <input type="text" class="form-control" id="qMessagefooter" placeholder="Enter Message">
+                          <input type="text" class="form-control error-message" name="message" id="qMessagefooter" placeholder="Enter Message">
                         </div>       
-                        <button type="button" class="btnb btn-custom" id="SubmitQueryfooter">Submit Now</button>                                       
-                  </div>
+                        <button type="button" class="btnb btn-custom" onclick="micro_formsubmit('.contact-us-footer');" id="SubmitQueryfooter">Submit Now</button>                                       
+                  </form>
               </div>
           </div>
       </div>

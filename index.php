@@ -56,18 +56,20 @@
 
 
 <div class="sidebar-contact">
+  <form method="post" id="contacform">
    <div class="toggle"></div>
    <h2>Got questions?</h2>
    <p>Don't be afraid, we're happy to aid!</p>
    <div class="scroll">
       <div>
-         <input type="text" name="" id="qSenderNameSidebar" placeholder="Name">
-         <input type="email" name="" id="qEmailIDSidebar" placeholder="Email">
-         <input type="rel" name="" id="qMobileNoSidebar" placeholder="Phone Number">
-         <textarea id="qMessageSidebar" placeholder="Message here.."></textarea>
-         <span id="SubmitQuerySidebar" class="form-btn">Intrested</span>
+         <input type="text" name="name" class="error-name" id="name" placeholder="Name">
+         <input type="email" name="email" class="error-email" id="email" placeholder="Email">
+         <input type="rel" name="phone" id="phone" class="error-phone" placeholder="Phone Number">
+         <textarea id="message" placeholder="Message here.." class="error-message" name="message"></textarea>
+         <span onclick="formsubmit('#contacform');" class="form-btn">Interested</span>
       </div>
    </div>
+   </form>
 </div>
 <!------------------ Slider Codes End From Here  --------------------------->
 <!---------------- Overview Section Codes Start From Here --------------->
@@ -205,5 +207,7 @@
 <?php include 'include/modal.php'; ?>
 
 <?php  include 'include/js-url.php'; ?>
+
+
 </body>
 </html>
