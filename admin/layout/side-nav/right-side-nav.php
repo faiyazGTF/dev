@@ -16,20 +16,20 @@
 			</div>
 		</a>
 
-		<a href="micro-itehr.php?id=<?php echo $update_id ?>">
+		<!-- <a href="micro-itehr.php?id=<?php echo $update_id ?>">
 			<div class="nav <?= ($activePage == 'micro-itehr') ? 'active':''; ?>"><div class="icon"><img src="images/icon/about.png"></div><div class="description">Others</div>
 			</div>
-		</a>
+		</a> -->
 		
 		
 		<a href="keep-highlights.php?id=<?php echo $update_id ?>">
 			<div class="nav <?= ($activePage == 'keep-highlights') ? 'active':''; ?>"><div class="icon"><img src="images/icon/highlights.png"></div><div class="description">Highlights</div>
 			</div>
 		</a>
-		<a href="micro-specifications.php?id=<?php echo $update_id ?>">
+		<!-- <a href="micro-specifications.php?id=<?php echo $update_id ?>">
 			<div class="nav <?= ($activePage == 'micro-specifications') ? 'active':''; ?>"><div class="icon"><img src="images/icon/about.png"></div><div class="description">Specifications</div>
 			</div>
-		</a>
+		</a> -->
 
 		<a href="transaction.php?id=<?php echo $update_id ?>" class="d-none">
 			<div class="nav <?= ($activePage == 'transaction') ? 'active':''; ?>">

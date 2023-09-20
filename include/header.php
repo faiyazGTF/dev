@@ -13,8 +13,8 @@
             <li class="nav-item nav-item-2">
                <a class="nav-link active" href="index.php">Home</a>
             </li>
-            <li class="nav-item nav-item-2">
-               <a class="nav-link" href="about-us.php">About US</a>
+            <li class="nav-item sub-menu sub-about nav-item-2">
+               <a class="nav-link" href="javascript:void(0);">About Us <img src="<?= BASE_URL ?>assets/images/icons/right-arrow.png" alt="about us" class="img-fluid sub-nav-img"></a>
             </li>
             <li class="nav-item sub-menu sub-residential nav-item-2">
                <a class="nav-link" href="javascript:void(0);">Residential <img src="<?= BASE_URL ?>assets/images/icons/right-arrow.png" alt="Residential" class="img-fluid sub-nav-img"> </a>
@@ -31,6 +31,16 @@
          </ul>
       </div>
    </nav>
+
+<ul class="sub-nav about-sub-menu">
+   <button class="btn btn-close"><i class="fa fa-close"></i></button>
+   <div class="sub-nav-2">
+      <h4 class="submenu-heading">About Us</h4>
+      <li><a href="about-us.php" class="nav-link">Who We Are</a></li>
+      <li><a href="vision-mission.php" class="nav-link">Vision & Mission</a></li>
+      <li><a href="our-team.php" class="nav-link">Our Team</a></li>
+   </div>
+</ul>
 
 <ul class="sub-nav residential-sub-menu">
   <button class="btn btn-close"><i class="fa fa-close"></i></button>

@@ -159,22 +159,28 @@ $(document).ready(function(){
 })
 
 $(document).ready(function() {
+  $(".sub-about").click(function() {
+    $(".about-sub-menu").addClass("active");
+    $(".residential-sub-menu").removeClass("active");
+    $(".commerical-sub-menu").removeClass("active");
+  });
+
     $(".sub-residential").click(function() {
       $(".residential-sub-menu").addClass("active");
       $(".commerical-sub-menu").removeClass("active");
-    });
-  
-    $(".btn-close").click(function() {
-      $(".residential-sub-menu").removeClass("active");
+      $(".about-sub-menu").removeClass("active");
     });
   
     $(".sub-commerical").click(function() {
       $(".commerical-sub-menu").addClass("active");
       $(".residential-sub-menu").removeClass("active");
+      $(".about-sub-menu").removeClass("active");
     });
   
     $(".btn-close").click(function() {
+      $(".residential-sub-menu").removeClass("active");
       $(".commerical-sub-menu").removeClass("active");
+      $(".about-sub-menu").removeClass("active");
     });
   
     // Auto-close sub-menus on scroll
