@@ -9,25 +9,27 @@
             <p>Address- C - 214 Third Floor, C Block Sector 63, Noida</p>
          </div>
          <div class="col-sm-12 col-md-6 col-lg-6 right-col">
+            <form action="" id="footerform">
             <div class="contact-us-footer">
                <div class="form-group">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" class="form-control" id="qSenderNamefooter" placeholder="Enter Name">
+                  <input type="text" class="form-control error-name" id="qSenderNamefooter" name="name" placeholder="Enter Name">
                </div>
                <div class="form-group">
                   <i class="fa fa-envelope"></i>
-                  <input type="text" class="form-control" id="qEmailIDfooter" placeholder="Enter Email ID">
+                  <input type="text" class="form-control error-email" id="qEmailIDfooter" name="email" placeholder="Enter Email ID">
                </div>
                <div class="form-group">
                   <i class="fa fa-phone" aria-hidden="true"></i>
-                  <input type="text" class="form-control" id="qMobileNofooter" placeholder="Enter Phone Number">
+                  <input type="text" class="form-control error-phone" id="qMobileNofooter" name="phone" placeholder="Enter Phone Number">
                </div>
                <div class="form-group">
                   <i class="fa fa-comments-o"></i>
-                  <input type="text" class="form-control" id="qMessagefooter" placeholder="Enter Message">
+                  <input type="text" class="form-control error-message" name="message" id="qMessagefooter" placeholder="Enter Message">
                </div>
-               <button type="button" class="btnb btn-custom" id="SubmitQueryfooter">Submit Now</button>                                       
+               <button type="button" class="btnb btn-custom"  onclick="formsubmit('#footerform');" id="SubmitQueryfooter">Submit Now</button>                                       
             </div>
+            </form>
          </div>
       </div>
    </div>

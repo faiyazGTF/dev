@@ -74,17 +74,17 @@ $micropages=  mysqli_query($conn, "SELECT * FROM `micro_site` WHERE platter_id="
                    
      </div>
 
-     <div class="mircosite-form">
+     <form class="mircosite-form">
          <h4 class="top-form-heading">Send us a message</h4>
          <div class="form-group">
-                             <select name="sources" id="sources1" class="custom-select form-control" placeholder="Select Project" required="">
-                             <option value="select">Choose Project</option>
+                             <select name="micro_page_id"  class="custom-select error-micro_page_id" placeholder="Select Project" required="">
+                             <option value="">Choose Project</option>
                               <?php 
                               $micropageslist=  mysqli_query($conn, "SELECT name,id FROM `micro_site` WHERE platter_id=".$pagedata['id']."");
 
                               if($micropageslist->num_rows >0){
                                  while ($micropageslistdata=mysqli_fetch_assoc($micropageslist)) {
-                                    echo '     <option value="'.$micropageslistdata['id'].'">'.$micropageslistdata['name'].'</option>';
+                                    echo '<option value="'.$micropageslistdata['id'].'">'.$micropageslistdata['name'].'</option>';
                                  }
                               }
                               ?>
@@ -94,22 +94,22 @@ $micropages=  mysqli_query($conn, "SELECT * FROM `micro_site` WHERE platter_id="
                            </div>
          <div class="form-group">
             <i class="fa fa-user"></i>
-            <input type="text" class="form-control" id="qSenderName" placeholder="Enter Name">
+            <input type="text" class="form-control error-name" name="name" placeholder="Enter Name">
          </div>
          <div class="form-group">
             <i class="fa fa-envelope"></i>
-            <input type="text" class="form-control" id="qEmailID" placeholder="Enter Email ID">
+            <input type="text" class="form-control error-email" name="email" placeholder="Enter Email ID">
          </div>
          <div class="form-group">
              <i class="fa fa-phone"></i>
-            <input type="text" class="form-control number-only" id="qMobileNo" placeholder="Enter Phone Number">
+            <input type="text" class="form-control number-only error-phone" name="phone" placeholder="Enter Phone Number">
          </div>
          <div class="form-group">
             <i class="fa fa-comments-o"></i>
-            <input type="text" class="form-control" id="qMessage" placeholder="Enter Message">
+            <input type="text" class="form-control error-message" name="message" placeholder="Enter Message">
          </div>
-         <button type="button" class="btnb btn-custom" id="SubmitQuery">Submit Now</button>  
-     </div>
+         <button type="button" class="btnb btn-custom" onclick="micro_formsubmit('.mircosite-form');">Submit Now</button>  
+      </form>
 
 
 
@@ -163,7 +163,7 @@ $micropages=  mysqli_query($conn, "SELECT * FROM `micro_site` WHERE platter_id="
                            <div class="project-box-content">
                               <p class="project-name">'.(!empty($microdata['starting_price']) ? $microdata['starting_price'] : "On Request").'</p>
                               <p class="project-location">'.$microdata['address'].'</p>
-                              <button type="button" class="btn btn-custom-2 openmodal" data-micro="'.encryptor('encrypt',$microdata['id']).'" >Interested </button>
+                              <button type="button" class="btn btn-custom-2 microidform" data-micro="'.$microdata['id'].'" >Interested </button>
                               <button type="button" class="btn btn-custom-2" style="margin-left:30px;"><a href="micro.php?page_url='.$microdata['page_url'].'">Check More</a> </button>     
                            </div>
                         </div>
@@ -185,6 +185,14 @@ $micropages=  mysqli_query($conn, "SELECT * FROM `micro_site` WHERE platter_id="
 <?php include 'include/modal.php'; ?>
 <?php  include 'include/js-url.php'; ?>
 
-
+<script>
+   $('.microidform').click(function(){
+      debugger;
+      var microidform =$(this).attr('data-micro');
+      $('#hiddenmicroid').remove();
+      $("#enqodal").find('form').append('<input id="hiddenmicroid" class="error-micro_page_id" name="micro_page_id" type="hidden" value="'+microidform+'" />')
+    $("#enqodal").modal('show');
+})
+</script>
 </body>
 </html>
