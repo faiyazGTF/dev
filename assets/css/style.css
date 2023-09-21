@@ -1494,7 +1494,9 @@ body {
 }
 
 .life_at_dev_section .single_life_at_dev .dark_btn{
-    
+    border-radius: 0;
+    padding: 5px 20px;
+    margin-top: 15px;
 }
 
 
