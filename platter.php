@@ -60,7 +60,6 @@ $micropages=  mysqli_query($conn, "SELECT * FROM `micro_site` WHERE platter_id="
 
         </div>
       
-        
         <div class="slider-content">
            <p class="top-sub-heading">Welcome</p>
            <h1 class="demo-heading"><?= $pagedata['name'] ?></h1>
