@@ -1470,6 +1470,138 @@ elseif($_GET['action']=='addkeyhightlights'){
 
 
 
+
+		if($_GET['action']=='get_category_form'){
+			
+			$error=0;
+			$validator=array();
+			if(empty($_POST['catname'])){
+				$error=1;
+				$validator['catname']="Name Fields is required";
+			}
+			if(empty($_FILES['image'])){
+				$error=1;
+				$validator['image']="Image Fields is required";
+			}
+			
+			
+			if($error==0){
+	
+			$name = $_POST['catname'];
+			$image = $_FILES['image']['name'];
+			$image_tmp = $_FILES['image']['tmp_name'];
+
+			$rand = rand();
+			$extension = pathinfo($image, PATHINFO_EXTENSION);
+			$newName = $rand.'.'.$extension;
+
+			$location = "uploads/gallery_category/$newName";
+			move_uploaded_file($image_tmp, $location);
+			
+
+			$sql = "INSERT INTO gallery_category(catname,image) VALUES('$name','$location')";
+			$result = mysqli_query($conn, $sql);
+	
+		    
+			if($result==1){
+				echo json_encode(['status'=>1,'message'=>"Form Submitted Sucessfully"]);
+			  }
+	
+			}else{
+				echo json_encode(['status'=>3,'message'=>"Plese Fill Mandaoty Fields",'errors'=>$validator]);
+			}
 	
 	
-	?>
+		}
+
+
+	/**********update gallery category ******************/
+	if($_GET['action']=='update_category_form'){
+			
+		$error=0;
+		$validator=array();
+		if(empty($_POST['catname'])){
+			$error=1;
+			$validator['catname']="Name Fields is required";
+		}
+		
+
+		if($error==0){
+		$id = $_POST['id'];
+		$name = $_POST['catname'];
+		$checkrecord = mysqli_query($conn, "SELECT * FROM `gallery_category` WHERE id=".$id."");
+		if($checkrecord->num_rows >0){
+		$recordata=mysqli_fetch_assoc($checkrecord);
+		$sqlstr="";
+		
+		if(!empty($_FILES['updateimage']['name'])){
+
+			if (file_exists($recordata['image'])){
+				unlink($recordata['image']);  
+			}
+
+			$meta_logo = $_FILES['updateimage'];
+			$meta_logo_name = $_FILES['updateimage']['name'];
+			$meta_logo_tmp_name = $_FILES['updateimage']['tmp_name'];
+			$image_ext = pathinfo($meta_logo_name, PATHINFO_EXTENSION);
+			
+			$brochure_date = time();
+			$new_brochure = "gallery-cat-$brochure_date.$image_ext";
+			
+			$meta_path = "uploads/gallery_category/$new_brochure";
+			
+		
+
+			if(move_uploaded_file($meta_logo_tmp_name, $meta_path)){
+				$bannerslist = $new_brochure;
+				$sqlstr=",image='$meta_path'";
+
+
+			}
+		}
+
+		$result = mysqli_query($conn, "UPDATE gallery_category SET catname='$name' $sqlstr WHERE id='$id'");
+		if($result==1){
+			echo json_encode(['status'=>1,'message'=>"Details Updated Sucessfully"]);
+		}
+		else{
+			echo json_encode(['status'=>0,'message'=>"failed to update"]);
+
+		}
+
+		}else{
+			echo json_encode(['status'=>0,'message'=>"Record Not Found"]);
+
+		}
+	}else{
+		echo json_encode(['status'=>3,'message'=>"Plese Fill Mandaoty Fields",'errors'=>$validator]);
+	}
+}
+	
+/*****************Delete Gallery Category***********************/
+
+if($_GET['action']=='delete_category_form'){
+	$id = encryptor('decrypt',$_POST['id']);
+	
+	$result = mysqli_query($conn, "SELECT * FROM gallery_category WHERE id='$id'");
+	if($result->num_rows >0){
+	
+		$row = mysqli_fetch_assoc($result);
+		if(file_exists($row['image'])){
+			unlink($row['image']);  
+		}
+		$deleteQuery = mysqli_query($conn,"DELETE FROM gallery_category WHERE id='$id'");
+		if($deleteQuery==1){
+			echo json_encode(['status'=>1,'message'=>"Data Deleted Sucessfully"]);
+
+		}else{
+		echo json_encode(['status'=>0,'message'=>"Failed to delete"]);
+
+		}
+		
+	}else{
+		echo json_encode(['status'=>0,'message'=>"Something went wrong"]);
+	}
+}
+
+?>

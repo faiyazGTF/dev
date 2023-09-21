@@ -10,7 +10,7 @@
 
 
 <script src="js/main.js"></script>
-
+<script src="vendor/life_at.js"></script>
 <script src="js/dataTable.js"></script>
 <script>
 $(".toggle").click(function () {
