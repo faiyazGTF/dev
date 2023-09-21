@@ -136,7 +136,6 @@ function deleteData(tablename,comparename,id){
 
 
 
-
 function  updatesignlerecord(tablename,column,keyid,value){
 
     $.ajax({
@@ -187,8 +186,28 @@ new RichTextEditor(".myeditor1");
 
 
 
-
-
-
-
-
+ 
+function imageValidation(file){
+	debugger;
+	$(file).next('.errors').remove();
+	var fileName=file.value; 
+	var idxDot = fileName.lastIndexOf(".") + 1;
+	var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+  
+	   if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+		  
+	    }else{
+		alert("Onlye Allowed (jpg, jpg, png)"); file.value="";
+		$(file).after('<p class="errors">Invalid File allowed (jpg, jpg, png)</p>');
+	    }
+  
+  
+			 const fileSize = file.files[0].size / 1024 / 1024; 
+			 if(fileSize > 1)
+			 {
+			     alert("File size should be less than 1 MB"); file.value="";
+			     $(file).after('<p class="errors">File size should be less than 1 MB</p>');
+			
+			}
+}
+  

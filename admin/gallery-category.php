@@ -14,20 +14,20 @@
 					<h6><i class="fa fa-building" aria-hidden="true"></i> Add  Page</h6>
 					
 				</div>
-                <form action="" id="addingmetatagform" class="">
+                <form action="" id="getcategory_form" class="">
 				
                     <div class="form-group">
                         <label for="">Category Name</label>
-                        <textarea  name="catname" class="form-control " id="catname"></textarea>
+                        <input type="text" class="form-control" name="catname" id="catname">
+
                     </div>
 
                     <div class="form-group">
-                        <label for="">Header</label>
-                        <textarea  name="catimage" class="form-control " id="catimage"></textarea>
+                        <label for="">image</label>
+                        <input type="file" name="image" onchange="imageValidation(this)" class="form-control" id="image">
                     </div>
 
-
-                    <button type="submit" class="btn btn-info addmetadetails" >Submit</button>
+                    <button type="submit" class="btn btn-info addmetadetails" id="submit">Submit</button>
 
                 </form>
 			</div>
@@ -40,14 +40,40 @@
 					<thead>
 						<tr>
 							
-							<th>Page</th>
-							<th>Meta Title</th>
-							<th>Meta keyword</th>
+							<th>Sno</th>
+							<th>Category</th>
+							<th>Image</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr></tr>
+                       
+                        <?php 
+                        $sql = "SELECT * FROM gallery_category";
+                        $result = mysqli_query($conn, $sql);
+
+                        if(!$result){
+                            die('Query failed '.mysqli_error($conn));
+                        }else{
+                           
+                        $num = 1;
+                        while($row = mysqli_fetch_assoc($result)){
+                            $id = $row['id'];
+                            $catname = $row['catname'];
+                            $image = $row['image'];
+                            echo "<tr>";
+                            echo "<td>$num</td>";
+                            echo "<td>$catname</td>";
+                            echo "<td><img  src='".$image."' width='100'></td>";
+                            echo "<td><a href='' class='category_modal' value='$id&$catname&$image' data-toggle='modal' data-target='#udpatemetatagefielsds'>Edit</a></td>";
+                            echo "<td><a href='javascript:void(0)' class='deletegallerycategory' dataid='".encryptor('encrypt',$row['id'])."' >Delete</a></td>";
+                            echo "</tr>";
+                            $num++;}
+                               }
+                        
+                      
+                        ?>
+						
 					</tbody>
 					</table>
 				</div>
@@ -67,32 +93,19 @@
                         </div>
 
                         <div class="modal-body">
-						<form action="" id="addingmetatagformupdate" class="">
+						<form action="" id="gallery_category_update_form" class="">
 				
                     <div class="form-group">
-                        <label for="">Meta Title</label>
-                        <input type="text" name="metatitle" class="form-control " id="metatitledate">
+                        <label for="">Category Name</label>
+                        <input type="text" name="updategategory" class="form-control" id="update_catname">
                     </div>
                     <div class="form-group">
-                        <label for="">Meta Keyword</label>
-                        <input type="text" name="metaKeyword" class="form-control " id="metaKeyworddate">
+                        <label for="">Image</label>
+                        <input type="file" name="updateimage" onchange="imageValidation(this)" class="form-control" id="update_image">
                     </div>
-                    <div class="form-group">
-                        <label for="">Meta Descriptions</label>
-                        <textarea  name="metadescriptions" class="form-control " id="metadescriptionsdate"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Header</label>
-                        <textarea  name="headerfields" class="form-control " id="headerfieldsdate"></textarea>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="">Footer</label>
-                        <textarea  name="footerfields" class="form-control " id="footerfieldsdate"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-info " >Submit</button>
+                    <input type="hidden" id="hiddenId">
+                    <input type="hidden" id="oldImage">
+                    <button type="submit" class="btn btn-info" id="gallery_category_update">Update</button>
 
                 </form>
                         </div>
@@ -102,3 +115,22 @@
 <?php 
 	include_once 'layout/footer/footer.php';
 ?>
+<script>
+
+$('.category_modal').on('click',function(){
+ 
+    var data = $(this).attr('value')
+    var dataArray = data.split('&')
+    var id = dataArray[0]
+    var catname = dataArray[1]
+    var image = dataArray[2]
+
+    console.log(catname)
+    console.log(image)
+    $('#hiddenId').val(id)
+    $('#update_catname').val(catname)
+    $('#oldImage').val(image)
+
+})
+
+</script>
