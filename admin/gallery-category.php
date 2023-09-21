@@ -124,9 +124,6 @@ $('.category_modal').on('click',function(){
     var id = dataArray[0]
     var catname = dataArray[1]
     var image = dataArray[2]
-
-    console.log(catname)
-    console.log(image)
     $('#hiddenId').val(id)
     $('#update_catname').val(catname)
     $('#oldImage').val(image)
