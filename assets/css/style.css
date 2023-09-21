@@ -1458,9 +1458,10 @@ body {
 .life_at_dev_section .life_at_dev_col .link{
     position:relative;
     display: block;
+    overflow: hidden;
 }
 
-.life_at_dev_section .life_at_dev_col .link:before{
+.life_at_dev_section .life_at_dev_col .link::before{
     position:absolute;
     content:'';
     height:100%;
@@ -1469,6 +1470,69 @@ body {
     width:100%;
     background: linear-gradient(0deg, #00000082, transparent);
     z-index: 1;
+    transition:all 0.3s ease-in-out;
+}
+
+
+.life_at_dev_section .life_at_dev_col .link::after{
+content: '';
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%,50%);
+ 
+}
+a.link:hover::{
+    left: 0;
+  top: 0;
+  bottom: 0px;
+  right:0px;
+}
+
+.life_at_dev_section .link .redirect_icon{
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity:0;
+    visibility: hidden;
+    transition:all 0.3s ease-in-out;
+}
+
+.life_at_dev_section .link:hover .redirect_icon{
+    transform: translate(-50%, -50%);
+    opacity:1;
+    visibility: visible;
+}
+
+.life_at_dev_section .life_at_dev_col .link:hover::before{
+    /* animation: beforeAn 0.3s forwards; */
+    background: linear-gradient(0deg, #0000003d, #0000003d);
+}
+
+@keyframes beforeAn {
+    0%{
+        background: linear-gradient(0deg, #00000082, transparent);
+    }
+
+    100%{
+        background: linear-gradient(0deg, #0000003d, #0000003d);
+    }
+}
+
+.life_at_dev_section .link .redirect_icon img{
+    width: 20px;
 }
 
 .life_at_dev_section .single_life_at_dev{
@@ -1497,6 +1561,15 @@ body {
     border-radius: 0;
     padding: 5px 20px;
     margin-top: 15px;
+}
+
+.life_at_dev_section .link .thumbnail{
+    transform:scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.life_at_dev_section .link:hover .thumbnail{
+    transform:scale(1.05);
 }
 
 
