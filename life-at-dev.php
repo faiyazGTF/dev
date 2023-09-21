@@ -67,15 +67,18 @@
                 <!-- for Masonry column width -->
                 <li>
                   <a href="" class="link">
+                    <div class="redirect_icon">
+                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+                    </div>
                     <div class="single_life_at_dev">
-                      <img
+                      <img 
                         src="<?= BASE_URL ?>assets/images/life-at-dev/employee-of-the-month.jpg"
                         alt="employee of the month"
                         class="img-fluid thumbnail"
                       />
                       <div class="content">
                         <h4 class="title">Employee of the month</h4>
-                        <button class="btn dark_btn">View Photos</button>
+                        <!-- <button class="btn dark_btn">View Photos</button> -->
                       </div>
                     </div>
                   </a>
@@ -83,6 +86,9 @@
             
                 <li>
                   <a href="" class="link">
+                    <div class="redirect_icon">
+                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+                    </div>
                     <div class="single_life_at_dev">
                       <img
                         src="<?= BASE_URL ?>assets/images/life-at-dev/work-anniversary.jpg"
@@ -91,7 +97,7 @@
                       />
                       <div class="content">
                         <h4 class="title">Work Anniversary</h4>
-                        <button class="btn dark_btn">View Photos</button>
+                        <!-- <button class="btn dark_btn">View Photos</button> -->
                       </div>
                     </div>
                   </a>
@@ -99,6 +105,9 @@
 
                 <li>
                   <a href="" class="link">
+                    <div class="redirect_icon">
+                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+                    </div>
                     <div class="single_life_at_dev">
                       <img
                         src="<?= BASE_URL ?>assets/images/life-at-dev/independence-day.jpg"
@@ -107,7 +116,7 @@
                       />
                       <div class="content">
                         <h4 class="title">Independence Day</h4>
-                        <button class="btn dark_btn">View Photos</button>
+                        <!-- <button class="btn dark_btn">View Photos</button> -->
                       </div>
                     </div>
                   </a>
@@ -115,6 +124,9 @@
 
                 <li>
                   <a href="" class="link">
+                    <div class="redirect_icon">
+                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+                    </div>
                     <div class="single_life_at_dev">
                       <img
                         src="<?= BASE_URL ?>assets/images/life-at-dev/birthday-celebration.jpg"
@@ -123,7 +135,7 @@
                       />
                       <div class="content">
                         <h4 class="title">Independence Day</h4>
-                        <button class="btn dark_btn">View Photos</button>
+                        <!-- <button class="btn dark_btn">View Photos</button> -->
                       </div>
                     </div>
                   </a>
@@ -131,6 +143,9 @@
 
                 <li>
                   <a href="" class="link">
+                    <div class="redirect_icon">
+                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+                    </div>
                     <div class="single_life_at_dev">
                       <img
                         src="<?= BASE_URL ?>assets/images/life-at-dev/birthday-celebration.jpg"
@@ -139,7 +154,7 @@
                       />
                       <div class="content">
                         <h4 class="title">Independence Day</h4>
-                        <button class="btn dark_btn">View Photos</button>
+                        <!-- <button class="btn dark_btn">View Photos</button> -->
                       </div>
                     </div>
                   </a>
@@ -147,6 +162,9 @@
 
                 <li>
                   <a href="" class="link">
+                    <div class="redirect_icon">
+                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+                    </div>
                     <div class="single_life_at_dev">
                       <img
                         src="<?= BASE_URL ?>assets/images/life-at-dev/birthday-celebration.jpg"
@@ -155,7 +173,7 @@
                       />
                       <div class="content">
                         <h4 class="title">Independence Day</h4>
-                        <button class="btn dark_btn">View Photos</button>
+                        <!-- <button class="btn dark_btn">View Photos</button> -->
                       </div>
                     </div>
                   </a>
