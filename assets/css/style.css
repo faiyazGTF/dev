@@ -1445,6 +1445,62 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* life_at_dev_section */
+
+.life_at_dev_section .life_at_dev_col{
+    margin-top:80px;
+}
+
+.life_at_dev_section .life_at_dev_col .grid li{
+    padding:5px;
+}
+
+.life_at_dev_section .life_at_dev_col .link{
+    position:relative;
+    display: block;
+}
+
+.life_at_dev_section .life_at_dev_col .link:before{
+    position:absolute;
+    content:'';
+    height:100%;
+    left:0;
+    top:0;
+    width:100%;
+    background: linear-gradient(0deg, #00000082, transparent);
+    z-index: 1;
+}
+
+.life_at_dev_section .single_life_at_dev{
+    position:relative;
+}
+
+.life_at_dev_section .single_life_at_dev .content{
+    position:absolute;
+    content:'';
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    padding: 20px 20px;
+    z-index: 1;
+}
+
+.life_at_dev_section .single_life_at_dev .title{
+    color:#fff;
+    font-family: var(--poppins_medium);
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+.life_at_dev_section .single_life_at_dev .dark_btn{
+    border-radius: 0;
+    padding: 5px 20px;
+    margin-top: 15px;
+}
+
+
+
 /* start responsive */
 
 @media(max-width: 1600px) {
