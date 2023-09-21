@@ -47,12 +47,15 @@
             <div class="col-sm-12 col-md-3 col-lg-2 second_col">
                 <h4>Quick Links </h4>
                 <ul>
-                    <li><a href="index.html" target="_blank">Home</a></li>
-                    <li><a href="about-us.html" target="_blank">About Us</a></li>
-                    <li><a href="contact-us.html" target="_blank">Contact Us</a></li>  
-                    <li><a href="privacy-policy.html" target="_blank">Privacy Policy</a></li> 
-                    <li><a href="disclaimer.html" target="_blank">Disclaimer</a></li>  
-                    <li><a href="termandcondition.html" target="_blank">Term &amp; Condition</a></li>   
+                    <li><a href="index.php" target="_blank">Home</a></li>
+                    <li><a href="about-us.php" target="_blank">About Us</a></li>
+                    <li><a href="contact-us.php" target="_blank">Contact Us</a></li>  
+                    <li><a href="privacy-policy.php" target="_blank">Privacy Policy</a></li> 
+                    <li><a href="disclaimer.php" target="_blank">Disclaimer</a></li>  
+                    <li><a href="termandcondition.php" target="_blank">Term &amp; Condition</a></li>   
+                    <li><a href="life-at-dev.php" target="_blank">Life at</a></li>   
+
+                    
                 </ul>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 third_col">

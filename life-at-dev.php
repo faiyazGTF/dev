@@ -66,7 +66,7 @@
                 <!-- <li class="grid-sizer"></li> -->
                 <!-- for Masonry column width -->
                 <li>
-                  <a href="" class="link">
+                  <a href="dev-gallery.php" class="link">
                     <div class="redirect_icon">
                       <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
                     </div>
@@ -85,7 +85,7 @@
                 </li>
             
                 <li>
-                  <a href="" class="link">
+                  <a href="dev-gallery.php" class="link">
                     <div class="redirect_icon">
                       <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
                     </div>
@@ -104,7 +104,7 @@
                 </li>
 
                 <li>
-                  <a href="" class="link">
+                  <a href="dev-gallery.php" class="link">
                     <div class="redirect_icon">
                       <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
                     </div>
@@ -123,7 +123,7 @@
                 </li>
 
                 <li>
-                  <a href="" class="link">
+                  <a href="dev-gallery.php" class="link">
                     <div class="redirect_icon">
                       <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
                     </div>
@@ -142,7 +142,7 @@
                 </li>
 
                 <li>
-                  <a href="" class="link">
+                  <a href="dev-gallery.php" class="link">
                     <div class="redirect_icon">
                       <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
                     </div>
@@ -161,7 +161,7 @@
                 </li>
 
                 <li>
-                  <a href="" class="link">
+                  <a href="dev-gallery.php" class="link">
                     <div class="redirect_icon">
                       <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
                     </div>
@@ -195,7 +195,7 @@
                 <div class="service_col">
                   <img
                     src="<?= ADMIN_URL ?><?php echo $services['feature']; ?>"
-                    alt=""
+                    alt="dev-gallery.php"
                     class="img-fluid thumbnail"
                   />
                   <div class="content">
