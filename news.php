@@ -60,58 +60,45 @@
 
 <div class="container">
 <div class="row">
-<div class="col-sm-4">
 
-<div class="box">
-<img src="assets/images/sub-menu-banner.jpg" width="100%">
-            <div class="inner-box">
-              <h4>Some Heading Here</h4>
-              <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged...<a href="#">Read More</a></p>
+<?php
+      $result = mysqli_query($conn, "SELECT * FROM news ORDER BY id DESC");
 
-              <div class="bottom-blog">
-                <span><i class="fa fa-calendar"></i> June 27</span>
-
-                
-              </div>
-            </div>
-          </div>
-</div>
-
-
-<div class="col-sm-4">
-
-<div class="box">
-<img src="assets/images/sub-menu-banner.jpg" width="100%">
-            <div class="inner-box">
-              <h4>Some Heading Here</h4>
-              <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged...<a href="#">Read More</a></p>
-
-              <div class="bottom-blog">
-                <span><i class="fa fa-calendar"></i> June 27</span>
-
-                
-              </div>
-            </div>
-          </div>
-</div>
-
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+              
+      while($row = mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+        $timestamp = $row['blogDate'];
+        $fullDate = strtotime($timestamp);
+        $day = date('d', $fullDate);
+        $month = date('F', $fullDate);
+        $heading = $row['heading'];
+        $image = $row['large_image'];
+        $shortDesc = $row['description'];
+      ?>
 
 <div class="col-sm-4">
-
 <div class="box">
-<img src="assets/images/sub-menu-banner.jpg" width="100%">
-            <div class="inner-box">
-              <h4>Some Heading Here</h4>
-              <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged...<a href="#">Read More</a></p>
+<img src="admin/uploads/news/<?= $image ?>" width="100%">
+  <div class="inner-box">
+    <h4><?= $heading ?></h4>
+   <div class="description<?= $id?>" style="height:78px; overflow:hidden"><?= $shortDesc ?></div>
+   <a href='javascript:void(0)' id="readmore<?= $id?>" onclick="readmore_btn(<?= $id?>)">Read More</a>
+    <div class="bottom-blog">
+      <span><i class="fa fa-calendar"></i><?= $month?> <?=$day?></span>
 
-              <div class="bottom-blog">
-                <span><i class="fa fa-calendar"></i> June 27</span>
-
-                
-              </div>
-            </div>
-          </div>
+      
+    </div>
+  </div>
 </div>
+</div>
+
+<?php
+  }
+}
+?>    
 
 </div>
 </div>
@@ -127,6 +114,15 @@
 
 
 </body>
+<script>
 
+function readmore_btn(id){
+$('#readmore'+id+'').toggle(function(){
+  $('.description'+id+'').css({'overflow':'none', 'height':'auto'})
+ 
+})
+}
+
+</script>
 
 </html>

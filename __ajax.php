@@ -93,4 +93,99 @@
 
 
       }
+
+
+/********************Share CV / Job application*****************************/
+
+
+
+if($_GET['action']=='add_sharecv_form'){
+
+      $error=0;
+      $validator=array();
+      if(empty($_POST['name'])){
+            $error=1;
+            $validator['name']="name Fields is required";
+      }
+      if(empty($_POST['email'])){
+            $error=1;
+            $validator['email']="email Fields is required";
+      }
+      if(empty($_POST['mobile'])){
+            $error=1;
+            $validator['mobile']="mobile Fields is required";
+      }
+      if(empty($_POST['title'])){
+            $error=1;
+            $validator['title']="mobile Fields is required";
+      }
+      if(empty($_POST['experience'])){
+            $error=1;
+            $validator['experience']="experience Fields is required";
+      }
+      if(empty($_POST['message'])){
+            $error=1;
+            $validator['message']="description Fields is required";
+      }
+      if(empty($_FILES['resume']['name'])){
+            $error=1;
+            $validator['resume']="resume Fields is required";
+      }
+
+      if($error==0){
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $mobile = $_POST['mobile'];
+      $title = $_POST['title'];
+      $experience = $_POST['experience'];
+      $message = mysqli_real_escape_string($conn,$_POST['message']);
+
+        $image = $_FILES['resume']['name'];
+        $image_tmp = $_FILES['resume']['tmp_name'];
+
+        $rand = rand();
+        $extension = pathinfo($image, PATHINFO_EXTENSION);
+        $newName = $rand.'.'.$extension;
+
+        $location = "admin/uploads/jobapplication/$newName";
+        move_uploaded_file($image_tmp, $location);
+        
+
+
+      $sql = "INSERT INTO jobapplication(title,name,email,mobile,experience,description,resume) VALUES('$title','$name','$email','$mobile','$experience','$message','$newName')";
+      $result = mysqli_query($conn, $sql);
+
+    
+      if($result==1){
+            echo json_encode(['status'=>1,'message'=>"Form Submitted Sucessfully"]);
+        }
+
+      }else{
+            echo json_encode(['status'=>3,'message'=>"Plese Fill Mandaoty Fields",'errors'=>$validator]);
+      }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

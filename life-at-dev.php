@@ -65,119 +65,36 @@
               <ul class="grid">
                 <!-- <li class="grid-sizer"></li> -->
                 <!-- for Masonry column width -->
-                <li>
-                  <a href="dev-gallery.php" class="link">
-                    <div class="redirect_icon">
-                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
-                    </div>
-                    <div class="single_life_at_dev">
-                      <img 
-                        src="<?= BASE_URL ?>assets/images/life-at-dev/employee-of-the-month.jpg"
-                        alt="employee of the month"
-                        class="img-fluid thumbnail"
-                      />
-                      <div class="content">
-                        <h4 class="title">Employee of the month</h4>
-                        <!-- <button class="btn dark_btn">View Photos</button> -->
-                      </div>
-                    </div>
-                  </a>
-                </li>
-            
-                <li>
-                  <a href="dev-gallery.php" class="link">
-                    <div class="redirect_icon">
-                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
-                    </div>
-                    <div class="single_life_at_dev">
-                      <img
-                        src="<?= BASE_URL ?>assets/images/life-at-dev/work-anniversary.jpg"
-                        alt="employee of the month"
-                        class="img-fluid thumbnail"
-                      />
-                      <div class="content">
-                        <h4 class="title">Work Anniversary</h4>
-                        <!-- <button class="btn dark_btn">View Photos</button> -->
-                      </div>
-                    </div>
-                  </a>
-                </li>
+                
+          <?php
+              $sql = "SELECT * FROM gallery_category";
+              $result = mysqli_query($conn, $sql);
 
-                <li>
-                  <a href="dev-gallery.php" class="link">
-                    <div class="redirect_icon">
-                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
-                    </div>
-                    <div class="single_life_at_dev">
-                      <img
-                        src="<?= BASE_URL ?>assets/images/life-at-dev/independence-day.jpg"
-                        alt="employee of the month"
-                        class="img-fluid thumbnail"
-                      />
-                      <div class="content">
-                        <h4 class="title">Independence Day</h4>
-                        <!-- <button class="btn dark_btn">View Photos</button> -->
-                      </div>
-                    </div>
-                  </a>
-                </li>
+              if(!$result){
+                die('Query failed '.mysqli_error($conn));
+              }else{
 
-                <li>
-                  <a href="dev-gallery.php" class="link">
-                    <div class="redirect_icon">
-                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
-                    </div>
-                    <div class="single_life_at_dev">
-                      <img
-                        src="<?= BASE_URL ?>assets/images/life-at-dev/birthday-celebration.jpg"
-                        alt="employee of the month"
-                        class="img-fluid thumbnail"
-                      />
-                      <div class="content">
-                        <h4 class="title">Independence Day</h4>
-                        <!-- <button class="btn dark_btn">View Photos</button> -->
-                      </div>
-                    </div>
-                  </a>
-                </li>
+                while($row = mysqli_fetch_assoc($result)){           
+ 
+                
+            echo '<li>
+            <a href="dev-gallery.php?id='.$row['id'].'" class="link">
+              <div class="redirect_icon">
+                <img src="'.BASE_URL.'assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
+              </div>
+              <div class="single_life_at_dev">
+                <img   src="'.ADMIN_URL.$row['image'].'"  class="img-fluid thumbnail"  />
+                <div class="content">
+                  <h4 class="title">'.$row['catname'].'</h4>
+                </div>
+              </div>
+            </a>
+          </li>';
+            }
 
-                <li>
-                  <a href="dev-gallery.php" class="link">
-                    <div class="redirect_icon">
-                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
-                    </div>
-                    <div class="single_life_at_dev">
-                      <img
-                        src="<?= BASE_URL ?>assets/images/life-at-dev/birthday-celebration.jpg"
-                        alt="employee of the month"
-                        class="img-fluid thumbnail"
-                      />
-                      <div class="content">
-                        <h4 class="title">Independence Day</h4>
-                        <!-- <button class="btn dark_btn">View Photos</button> -->
-                      </div>
-                    </div>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="dev-gallery.php" class="link">
-                    <div class="redirect_icon">
-                      <img src="<?= BASE_URL ?>assets/images/icons/redirect.png" alt="redirect-icon" class="img-fluid" />
-                    </div>
-                    <div class="single_life_at_dev">
-                      <img
-                        src="<?= BASE_URL ?>assets/images/life-at-dev/birthday-celebration.jpg"
-                        alt="employee of the month"
-                        class="img-fluid thumbnail"
-                      />
-                      <div class="content">
-                        <h4 class="title">Independence Day</h4>
-                        <!-- <button class="btn dark_btn">View Photos</button> -->
-                      </div>
-                    </div>
-                  </a>
-                </li> 
+            }
+            ?>
+   
                 
               </ul>
             </div>

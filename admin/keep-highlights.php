@@ -220,9 +220,9 @@
 								</div>
 							<?php
 									}
-									echo '<div class="btn-save mt-4">
-									<button class="save-btn" id="update">Update</button>
-								</div>';
+								// 	echo '<div class="btn-save mt-4">
+								// 	<button class="save-btn" id="update">Update</button>
+								// </div>';
 								}	
 							?>
 				</div>

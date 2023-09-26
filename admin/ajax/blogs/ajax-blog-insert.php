@@ -22,6 +22,8 @@
 		$error=1;
 	}
 
+
+
     if($error==0){
     $date = $_POST['date'];
     $heading = mysqli_real_escape_string($conn,$_POST['blogHeading']);
@@ -62,6 +64,7 @@
     $metakey = mysqli_real_escape_string($conn,$_POST['metakey']);
     $metadesc = mysqli_real_escape_string($conn,$_POST['metadesc']);
 
+  
 $result = mysqli_query($conn,"INSERT INTO blogs(meta_title,meta_keywords,meta_description,heading,large_image,mobile_image,shortDesc,description,blogDate) VALUES('$metatitle','$metakey','$metadesc','$heading','$desktop_newName','$mobile_newName','$shortDesc','$description','$date')");
 
 if($result==1){

@@ -180,4 +180,18 @@ function getMicrpagename($conn,$id){
     }
 }
 
+function get_gallery_category_name(){
+    global $conn;
+    $get_gallery_name = mysqli_query($conn, "SELECT catname,id FROM gallery_category");
+    if($get_gallery_name->num_rows > 0){
+    $data = [];
+    while($row = mysqli_fetch_assoc($get_gallery_name)){
+        $data[] = $row;
+    }
+    return $data;
+
+}
+}
+
+
 ?>

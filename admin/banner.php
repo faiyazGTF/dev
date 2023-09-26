@@ -17,9 +17,8 @@ include_once 'config/conn.php';
 		$update_id = $_GET['id'];
 		$eid = encryptor('decrypt',$_GET['id']);
 		include_once 'layout/side-nav/right-side-nav.php';
-		
-		
-	}
+	
+}
 ?>
 <section class="microsite-area">
 	<div class="">

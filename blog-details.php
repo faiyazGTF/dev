@@ -5,15 +5,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chaahat Homes | Blog Details</title>
+    <?php
+    if(isset($_GET['id'])){
+      $id = encryptor('decrypt', $_GET['id']);
+    }
+      $result = mysqli_query($conn, "SELECT * FROM blogs WHERE id='$id'");
+
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+              
+      while($row = mysqli_fetch_assoc($result)){
+        $id = encryptor('encrypt', $row['id']);
+         $title = $row['meta_title'];
+        $keyword = $row['meta_keywords'];
+        $meta_description = $row['meta_description'];
+         ?>
+
+    <title>Chaahat Homes | <?= $title?></title>
 	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Chaahat Homes | About Us"/>
-	<meta name="twitter:title" content="Chaahat Homes | About Us" />
-	<meta name="description" content="Chahat Homes is a premier real estate advisory company that provides residential and commercial property services to individuals and businesses. Our vision is to help people who are looking for property investment in Gurgaon, India." />
-	<meta property="og:description" content="Chahat Homes is a premier real estate advisory company that provides residential and commercial property services to individuals and businesses. Our vision is to help people who are looking for property investment in Gurgaon, India."/>
+    <meta property="og:title" content="<?= $title?>"/>
+	<meta name="twitter:title" content="<?= $title?>" />
+	<meta name="description" content="<?= $meta_description?>" />
+  <meta property="og:description" content="Chahat Homes is a premier real estate advisory company that provides residential and commercial property services to individuals and businesses. Our vision is to help people who are looking for property investment in Gurgaon, India."/>
 	<meta name="twitter:description" content="Chahat Homes is a premier real estate advisory company that provides residential and commercial property services to individuals and businesses. Our vision is to help people who are looking for property investment in Gurgaon, India." />
-	<meta name="keywords" content="Chahaat Homes, Real Estate Consultant,Property Advisor Gurgaon" />
+	<meta name="keywords" content="<?= $keyword?>" />
+  <?php
+      }
+    }
+  ?>
 	<meta name="ROBOTS" content="index, follow"/>
 	<meta name="ROBOTS" content="ALL"/>
 	<meta name="Slurp" content="index,follow,archive" />
@@ -59,6 +80,28 @@
   </div>
   <div class="inner-blogs">
     <div class="left-blog">
+
+    <?php
+    if(isset($_GET['id'])){
+      $id = encryptor('decrypt', $_GET['id']);
+    }
+      $result = mysqli_query($conn, "SELECT * FROM blogs WHERE id='$id'");
+
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+              
+      while($row = mysqli_fetch_assoc($result)){
+        $id = encryptor('encrypt', $row['id']);
+        $timestamp = $row['blogDate'];
+        $fullDate = strtotime($timestamp);
+        $day = date('d', $fullDate);
+        $month = date('F', $fullDate);
+        $heading = $row['heading'];
+        $image = $row['large_image'];
+        $description = $row['description'];
+      ?>
+
       <div class="box">
         <!-- <div class="name-date">
           <ul>
@@ -68,62 +111,61 @@
         </div> -->
         <div class="media">
           <div class="blog-date">
-            <h4>28</h4>
-            <h6>Jun</h6>
+            <h4><?= $day ?></h4>
+            <h6><?= $month ?></h6>
           </div>
         <div class="media-body">
-        <h2>Real Estate Consulting</h2>
-        <img src="assets/images/blog/blog1.jpg" width="100%">
-        <h5 class="p-dark">Consulting Services are as designed to target your specific business needs and goals, including the following:</h5>
-        <p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
-        <p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
-        <p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
-        <p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
+        <h2><?= $heading ?></h2>
+        <img src="admin/uploads/blogs/<?= $image ?>" width="100%">
+        <!-- <h5 class="p-dark">Consulting Services are as designed to target your specific business needs and goals, including the following:</h5> -->
+        <p><?= $description ?></p>
 
       </div>
     </div>
       </div><!----------box---------->
+      <?php
+          }
+        }
+      ?>    
 
 
     </div><!-------------------left-blog-------------->
     <div class="right-blog">
       <h4>Latest Blogs</h4>
-      <div class="box">
-        <h2>How Many Days it Takes to a Beneficiary Account</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
-          <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
-          </ul>
-      </div>
+      <?php
+        if(isset($_GET['id'])){
+          $id = encryptor('decrypt', $_GET['id']);
+        }
+      $result = mysqli_query($conn, "SELECT * FROM blogs");
 
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+              
+      while($row = mysqli_fetch_assoc($result)){
+        $id = encryptor('encrypt', $row['id']);
+        $timestamp = $row['blogDate'];
+        $fullDate = strtotime($timestamp);
+        $day = date('d', $fullDate);
+        $month = date('F', $fullDate);
+        $heading = $row['heading'];
+        $image = $row['image'];
+        $shortDesc = $row['shortDesc'];
+      ?>
       <div class="box">
-        <h2>Real Estate Consulting</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
+        <h2><?= $heading ?></h2>
+        <p><?= mb_strimwidth($row['description'], 0, 80) ?>
+          <a href="<?= BASE_URL ?>blog-details.php?id='<?= $id ?>'">Read More</a></p>
           <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
+            <li><i class="fa fa-comments-o"></i> <?= $day ?></li>
           </ul>
       </div>
-
-      <div class="box">
-        <h2>Real Estate Consulting</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
-          <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
-          </ul>
-      </div>
-
-      <div class="box">
-        <h2>How Many Days it Takes to a Beneficiary Account</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
-          <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
-          </ul>
-      </div>
-    </div><!-------------------left-blog-------------->
+    <?php
+      }
+    }
+  
+    ?>
+    </div>
   </div>
 </section>
 <!-- revolution slider close -->

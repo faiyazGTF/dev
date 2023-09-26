@@ -1,4 +1,4 @@
-$('#submit').on('click',function(e){
+$('#gallery_submit').on('click',function(e){
 e.preventDefault()
 
 // var category_values = $('#getcategory_form').serialize();
@@ -110,7 +110,7 @@ $('#gallery_category_update').on('click',function(e){
             
       })
 
-      $('.deletegallerycategory').click(function(){
+$('.deletegallerycategory').click(function(){
 
             var dataid=$(this).attr('dataid').trim();
 
@@ -133,3 +133,120 @@ $('#gallery_category_update').on('click',function(e){
 })
 
 
+/*************gallery*******************/
+
+$(document).on('submit', '#add_gallery_form', function(e){
+
+      e.preventDefault();
+      var formData = new FormData(this);
+
+$.ajax({
+      url:'__ajax.php?action=add_gallery_form',
+      type:'POST',
+      data: formData,
+      // dataType: 'json',
+      enctype: 'multipart/form-data',
+      cache: false,
+      contentType: false,
+      processData: false,
+      success:function(res){
+            console.log(res)
+            var data=JSON.parse(res);
+            // var data = res;
+           if(data.status==3){
+            $('.errors').remove()
+            var keys = Object.keys(data.errors)
+            for (index = 0; index < keys.length; index++){
+                  var keyname = keys[index]
+                  console.log(keyname)
+                  $('#'+keyname).after('<p class="errors">'+data.errors[keyname]+'<p>');
+                  if(index==0){
+                      $('#'+keyname).focus();
+                  }
+            }
+
+           }    else if(data.status==1){
+      
+            alert(data.message);
+            // window.location.href="thanks.php";
+            window.location.reload();
+      
+          }else{
+            alert(data.message);
+              window.location.reload();
+              
+          }
+
+      }
+})
+})
+
+/**************gallery update**************************/
+
+$(document).on('submit','#update_gallery_form', function(e){
+      e.preventDefault();
+
+      var formData = new FormData(this);
+      
+      $.ajax({
+            url:'__ajax.php?action=update_gallery_forms',
+            type:'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            enctype: 'multipart/form-data',
+            success:function(res){
+                 var data = JSON.parse(res)
+                 if(data.status==3){
+                  $('.errors').remove()
+                  var keys = Object.keys(data.errors)
+                  for (index = 0; index < keys.length; index++){
+                        var keyname = keys[index]
+                        console.log(keyname)
+                        $('#'+keyname).after('<p class="errors">'+data.errors[keyname]+'<p>');
+                        if(index==0){
+                            $('#'+keyname).focus();
+                        }
+                  }
+      
+                 }    else if(data.status==1){
+            
+                  alert(data.message);
+                  // window.location.href="thanks.php";
+                  window.location.reload();
+            
+                }else{
+                  alert(data.message);
+                    window.location.reload();
+                    
+                }
+             
+            }
+      
+      })
+         
+            
+      })
+/************ delete gallery *********************/
+$('.deletegallery').click(function(){
+
+      var dataid=$(this).attr('dataid').trim();
+
+
+  $.ajax({
+      url:'__ajax.php?action=delete_gallery',
+      type:'POST',
+      data: {'id':dataid},
+      success:function(res){
+            var data=JSON.parse(res);
+            if(data.status==1){
+                  alert(data.message);
+                  window.location.reload();
+            }else{
+                  alert(data.message);    
+            }
+      }
+});
+
+})

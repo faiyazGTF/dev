@@ -53,9 +53,11 @@
                     <li><a href="privacy-policy.php" target="_blank">Privacy Policy</a></li> 
                     <li><a href="disclaimer.php" target="_blank">Disclaimer</a></li>  
                     <li><a href="termandcondition.php" target="_blank">Term &amp; Condition</a></li>   
-                    <li><a href="life-at-dev.php" target="_blank">Life at</a></li>   
-
-                    
+                    <li><a href="news.php" target="_blank">News</a></li>
+                    <li><a href="our-jobs.php" target="_blank">Our Jobs</a></li>   
+                    <li><a href="share-cv.php" target="_blank">Share CV</a></li>   
+                    <li><a href="nri-services.php" target="_blank">NRI Services</a></li>   
+                         
                 </ul>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 third_col">
@@ -96,3 +98,4 @@
 
 <!------------------------------ Mobile Tabse Codes End From Here ------------------------------>
 <!-- The Modal -->
+    <script src="vendor/jsfiles.js"></script>

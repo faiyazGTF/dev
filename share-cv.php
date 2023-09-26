@@ -59,27 +59,27 @@
   </div>
 
 
-  <div class="inner-box">
+  <form class="inner-box" id="sharecv">
           <h2>Apply For Job</h2>
           <p>Ready for your next challenge? See which roles we’re hiring for right now.</p>
           <div class="form-sec">
           <h4>Name*</h4>
-          <input class="form-control" type="text" name="" placeholder="Name" spellcheck="false" data-ms-editor="true">
+          <input class="form-control" type="text" id="name" name="name" placeholder="Name" spellcheck="false" data-ms-editor="true">
           <h4>Email Id*</h4>
-          <input class="form-control" type="email" name="" placeholder="Email">
+          <input class="form-control" type="email" id="email" name="email" placeholder="Email">
           <h4>Phone No.*</h4>
-          <input class="form-control" type="rel" name="" placeholder="Phone Number" spellcheck="false" data-ms-editor="true">
+          <input class="form-control" type="rel" id="mobile" name="mobile" placeholder="Phone Number" spellcheck="false" data-ms-editor="true">
           <h4>Job Title*</h4>
-          <input class="form-control" type="rel" name="" placeholder="Job Title" spellcheck="false" data-ms-editor="true">
+          <input class="form-control" type="rel" id="title" name="title" placeholder="Job Title" spellcheck="false" data-ms-editor="true">
           <h4>Experience*</h4>
-          <input class="form-control" type="rel" name="" placeholder="Experience" spellcheck="false" data-ms-editor="true">
+          <input class="form-control" type="rel" id="experience" name="experience" placeholder="Experience" spellcheck="false" data-ms-editor="true">
           <h4>Message*</h4>
-          <textarea class="form-control form-control2" rows="1" placeholder="Message here.." spellcheck="false" data-ms-editor="true"></textarea>
+          <textarea class="form-control form-control2" rows="1" id="message" name="message" laceholder="Message here.." spellcheck="false" data-ms-editor="true"></textarea>
           <h4>Your CV*</h4>
-          <input type="file" class="form-control-file border">
-          <button class="btn-all">Intrested</button>
+          <input type="file" class="form-control-file border" onchange="imageValidation(this)" id="resume" name="resume">
+          <button class="btn-all">Interested</button>
         </div>
-        </div>
+</form>
 
 </section>
 <!-- revolution slider close -->

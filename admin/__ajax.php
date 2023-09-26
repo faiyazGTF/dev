@@ -1469,16 +1469,16 @@ elseif($_GET['action']=='addkeyhightlights'){
 		}
 
 
-
+	/**********add gallery category ******************/
 
 		if($_GET['action']=='get_category_form'){
-			
 			$error=0;
 			$validator=array();
 			if(empty($_POST['catname'])){
 				$error=1;
 				$validator['catname']="Name Fields is required";
 			}
+			
 			if(empty($_FILES['image'])){
 				$error=1;
 				$validator['image']="Image Fields is required";
@@ -1603,5 +1603,171 @@ if($_GET['action']=='delete_category_form'){
 		echo json_encode(['status'=>0,'message'=>"Something went wrong"]);
 	}
 }
+
+/************gallery*****************/
+
+if($_GET['action']=='add_gallery_form'){
+
+	
+	$error = 0;
+	$validator = array();
+
+
+	if(empty($_POST['date'])){
+		$error=1;
+		$validator['date']="Fill the details";
+	}
+	if(empty($_POST['catname'])){
+		$error=1;
+		$validator['catname']="Fill the details";
+	}
+	
+	if(empty($_FILES['image']['name'])){
+		$error=1;
+		$validator['image']="Fill select Image details";
+	}
+	
+	if(empty($_POST['filetype'])){
+		$error=1;
+		$validator['filetype'] = "Fill select Video details";
+	}
+
+	// print_r($validator);
+	// die;
+
+	if($error==0){
+		$date = $_POST['date'];
+		$catname = $_POST['catname'];
+		$file_type = $_POST['filetype'];
+
+		if(!empty($_FILES['image']['name'])){
+		$image = $_FILES['image']['name'];
+		$image_tmp = $_FILES['image']['tmp_name'];
+
+		$rand = rand();
+		$extension = pathinfo($image, PATHINFO_EXTENSION);
+		$newName = 'gallery-img-'.$rand.'.'.$extension;
+
+		$location1 = "uploads/gallery_category/$newName";
+		move_uploaded_file($image_tmp, $location1);
+		}
+		
+
+		$sql = "INSERT INTO gallery(date, catname, image, file_type) VALUES('$date','$catname','$location1','$file_type')";
+		$result = mysqli_query($conn, $sql);
+
+		
+		if($result==1){
+			echo json_encode(['status'=>1,'message'=>"Form Submitted Sucessfully"]);
+		}
+		
+
+	}else{
+		echo json_encode(['status'=>3,'message'=>"Plese Fill Mandaoty Fields",'errors'=>$validator]);
+	}
+
+}
+
+/**********update gallery ******************/
+if($_GET['action']=='update_gallery_forms'){
+	
+	$error=0;
+	$validator=array();
+	if(empty($_POST['update_date'])){
+		$error=1;
+		$validator['update_date']="Date is required";
+	}
+	if(empty($_POST['update_catname'])){
+		$error=1;
+		$validator['update_catname']="Fill the required details";
+	}
+	if(empty($_POST['filetypeupdate'])){
+		$error=1;
+		$validator['filetypeupdate'] = "Fill select Video details";
+	}
+
+	
+	// $file_type = $_POST['filetype'];
+
+	if($error==0){
+	$id = $_POST['hiddenId'];
+	$date = $_POST['update_date'];
+	$name = $_POST['update_catname'];
+	$file_type = $_POST['filetypeupdate'];
+	$checkrecord = mysqli_query($conn, "SELECT * FROM `gallery` WHERE id=".$id."");
+	if($checkrecord->num_rows >0){
+	$recordata=mysqli_fetch_assoc($checkrecord);
+	$sqlstr="";
+	$sqlstr2="";
+	if(!empty($_FILES['update_image']['name'])){
+
+		if (file_exists($recordata['image'])){
+			unlink($recordata['image']);  
+		}
+
+		$meta_logo = $_FILES['update_image'];
+		$meta_logo_name = $_FILES['update_image']['name'];
+		$meta_logo_tmp_name = $_FILES['update_image']['tmp_name'];
+		$image_ext = pathinfo($meta_logo_name, PATHINFO_EXTENSION);
+		
+		$brochure_date = time();
+		$new_brochure = "gallery-$brochure_date.$image_ext";
+		
+		$meta_path = "uploads/gallery_category/$new_brochure";
+		
+		if(move_uploaded_file($meta_logo_tmp_name, $meta_path)){
+			$bannerslist = $new_brochure;
+			$sqlstr=",image='$meta_path'";
+		}
+	}
+
+
+	$result = mysqli_query($conn, "UPDATE gallery SET date='$date', catname='$name',file_type='$file_type' $sqlstr $sqlstr2 WHERE id='$id'");
+	if($result==1){
+		echo json_encode(['status'=>1,'message'=>"Details Updated Sucessfully"]);
+	}
+	else{
+		echo json_encode(['status'=>0,'message'=>"failed to update"]);
+	}
+
+	}else{
+		echo json_encode(['status'=>0,'message'=>"Record Not Found"]);
+
+	}
+}else{
+	echo json_encode(['status'=>3,'message'=>"Plese Fill Mandaoty Fields",'errors'=>$validator]);
+}
+}
+
+/**************** delete gallery *********************/
+
+if($_GET['action']=='delete_gallery'){
+	$id = encryptor('decrypt',$_POST['id']);
+	
+	$result = mysqli_query($conn, "SELECT * FROM gallery WHERE id='$id'");
+	if($result->num_rows >0){
+	
+		$row = mysqli_fetch_assoc($result);
+		if(file_exists($row['image'])){
+			unlink($row['image']);  
+		}
+		
+		$deleteQuery = mysqli_query($conn,"DELETE FROM gallery WHERE id='$id'");
+		if($deleteQuery==1){
+			echo json_encode(['status'=>1,'message'=>"Data Deleted Sucessfully"]);
+
+		}else{
+		echo json_encode(['status'=>0,'message'=>"Failed to delete"]);
+
+		}
+		
+	}else{
+		echo json_encode(['status'=>0,'message'=>"Something went wrong"]);
+	}
+}
+
+
+
+
 
 ?>

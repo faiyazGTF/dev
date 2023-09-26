@@ -188,7 +188,6 @@ new RichTextEditor(".myeditor1");
 
  
 function imageValidation(file){
-	debugger;
 	$(file).next('.errors').remove();
 	var fileName=file.value; 
 	var idxDot = fileName.lastIndexOf(".") + 1;
@@ -210,4 +209,49 @@ function imageValidation(file){
 			
 			}
 }
+function imageValidationall(file){
+	$(file).next('.errors').remove();
+	var fileName=file.value; 
+	var idxDot = fileName.lastIndexOf(".") + 1;
+	var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
   
+	   if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile=="avi" || extFile=="mpeg" || extFile=="mp4"){
+		  
+	    }else{
+		alert("Onlye Allowed (jpg, jpg, png, mp4, mpeg, avi)"); file.value="";
+		$(file).after('<p class="errors">Invalid File allowed (jpg, jpg, png, mp4, mpeg, avi)</p>');
+	    }
+  
+  
+			 const fileSize = file.files[0].size / 5120 / 1024; 
+			 if(fileSize > 1)
+			 {
+			     alert("File size should be less than 5 MB"); file.value="";
+			     $(file).after('<p class="errors">File size should be less than 5 MB</p>');
+			
+			}
+}
+  
+
+function videoValidation(file){
+	$(file).next('.errors').remove();
+	var fileName=file.value; 
+	var idxDot = fileName.lastIndexOf(".") + 1;
+	var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+  
+	   if (extFile=="mpeg" || extFile=="mp4" || extFile=="avi"){
+		  
+	    }else{
+		alert("Onlye Allowed (mp4, mpeg, avi)"); file.value="";
+		$(file).after('<p class="errors">Invalid File allowed (mp4, mpeg, avi)</p>');
+	    }
+  
+  
+			 const fileSize = file.files[0].size / 10240 / 1024; 
+			 if(fileSize > 1)
+			 {
+			     alert("File size should be less than 5 MB"); file.value="";
+			     $(file).after('<p class="errors">File size should be less than 5 MB</p>');
+			
+			}
+}

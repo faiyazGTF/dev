@@ -1,5 +1,13 @@
 <?php include 'include/config.php'; ?>
 <?php include 'include/functions.php'; ?>
+<?php
+$result = mysqli_query($conn, "SELECT * FROM workwithus");
+
+if(!$result){
+  die('Query failed '.mysqli_error($conn));
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,10 +67,14 @@
   </div>
 
   <div class="job-sec">
-      <div class="job-part">
+    <?php
+
+    while($row = mysqli_fetch_assoc($result)){
+
+   echo '<div class="job-part">
         <div class="inn-job">
-          <h4>Job Title Here</h4>
-          <h6>Experience: 4 Years</h6>
+          <h4>'.$row['title'].'</h4>
+          <h6>Experience: '.$row['experience'].'</h6>
           <hr>
           <h5>Skills:</h5>
           
@@ -71,96 +83,15 @@
           </ul>
           <hr>
           <h5>Job Description:</h5>
-          <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</h6>
+          <h6>'.$row['description'].'</h6>
           <div class="btn-inn">
-            <a href="job-description.html">View Details</a>
+            <a href="'.BASE_URL.'/job-details.php?id='.$row['id'].'">View Details</a>
           </div>
         </div><!-----------inn-job--------->
-        <h2 class="posted"><span><b>Posted On:</b> 22/12/2022</span></h2>
-      </div><!-----------job-part--------->
-
-      <div class="job-part">
-        <div class="inn-job">
-          <h4>Job Title Here</h4>
-          <h6>Experience: 5 Years</h6>
-          <hr>
-          <h5>Skills:</h5>
-          <ul>
-            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</li>
-          </ul>
-          <hr>
-          <h5>Job Description:</h5>
-          <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</h6>
-          <div class="btn-inn">
-          <a href="job-description.html">View Details</a>
-          </div>
-
-        </div><!-----------inn-job--------->
-        <h2 class="posted"><span><b>Posted On:</b> 22/12/2022</span></h2>
-      </div><!-----------job-part--------->
-
-
-      <div class="job-part">
-        <div class="inn-job">
-          <h4>Job Title Here</h4>
-          <h6>Experience: 1 Years</h6>
-          <hr>
-          <h5>Skills:</h5>
-          <ul>
-            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</li>
-          </ul>
-          <hr>
-          <h5>Job Description:</h5>
-          <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</h6>
-          <div class="btn-inn">
-          <a href="job-description.html">View Details</a>
-          </div>
-
-        </div><!-----------inn-job--------->
-        <h2 class="posted"><span><b>Posted On:</b> 22/12/2022</span></h2>
-      </div><!-----------job-part--------->
-
-      <div class="job-part">
-        <div class="inn-job">
-          <h4>Job Title Here</h4>
-          <h6>Experience: 2 Years</h6>
-          <hr>
-          <h5>Skills:</h5>
-          <ul>
-            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</li>
-          </ul>
-          <hr>
-          <h5>Job Description:</h5>
-          <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</h6>
-          <div class="btn-inn">
-          <a href="job-description.html">View Details</a>
-          </div>
-
-        </div><!-----------inn-job--------->
-        <h2 class="posted"><span><b>Posted On:</b> 22/12/2022</span></h2>
-      </div><!-----------job-part--------->
-
-
-    
-      <div class="job-part">
-        <div class="inn-job">
-          <h4>Job Title Here</h4>
-          <h6>Experience: 5 Years</h6>
-          <hr>
-          <h5>Skills:</h5>
-          <ul>
-            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</li>
-          </ul>
-          <hr>
-          <h5>Job Description:</h5>
-          <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</h6>
-          <div class="btn-inn">
-            <a href="job-description.html">View Details</a>
-          </div>
-
-        </div><!-----------inn-job--------->
-        <h2 class="posted"><span><b>Posted On:</b> 22/12/2022</span></h2>
-      </div><!-----------job-part--------->
+        <h2 class="posted"><span><b>Posted On:</b> '.$row['dateCreated'].'</span></h2>
+      </div>';
+    }
+     ?>
 
 
 

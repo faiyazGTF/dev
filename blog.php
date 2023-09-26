@@ -1,5 +1,17 @@
 <?php include 'include/config.php'; ?>
 <?php include 'include/functions.php'; ?>
+<?php
+
+// $result = mysqli_query($conn, "SELECT * FROM blogs");
+
+// if(!$result){
+//   die('query failed '.mysqli_error($conn));
+// }else{
+//   $row = mysqli_fetch_assoc($result);
+// }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,90 +71,77 @@
   </div>
   <div class="inner-blogs">
     <div class="left-blog">
-      <div class="box">
-        <!-- <div class="name-date">
-          <ul>
-          <li><i class="fa fa-comments-o"></i> Comments</li>
-          <li><i class="fa fa-heart-o"></i> Like</li>
-          </ul>
-        </div> -->
-        <div class="media">
-          <div class="blog-date">
-            <h4>28</h4>
-            <h6>Jun</h6>
-          </div>
-        <div class="media-body">
-        <h2>Real Estate Consulting</h2>
-        <img src="assets/images/blog/blog1.jpg" width="100%">
-        <h5 class="p-dark">Consulting Services are as designed to target your specific business needs and goals, including the following:</h5>
-        <p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
-        <br>
-        <a href="#">Read More</a>
-      </div>
-    </div>
-      </div><!----------box---------->
+      <?php
+      $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY id DESC");
 
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+              
+      while($row = mysqli_fetch_assoc($result)){
+        $id = encryptor('encrypt', $row['id']);
+        $timestamp = $row['blogDate'];
+        $fullDate = strtotime($timestamp);
+        $day = date('d', $fullDate);
+        $month = date('F', $fullDate);
+        $heading = $row['heading'];
+        $image = $row['large_image'];
+        $shortDesc = $row['shortDesc'];
+      ?>
       <div class="box">
-        <div class="name-date">
-          <!-- <ul>
-          <li><i class="fa fa-comments-o"></i> Comments</li>
-          <li><i class="fa fa-heart-o"></i> Like</li>
-          </ul> -->
-        </div>
-        <div class="media">
+           <div class="media">
           <div class="blog-date">
-            <h4>28</h4>
-            <h6>Jun</h6>
+            <h4><?= $day ?></h4>
+            <h6><?= $month ?></h6>
           </div>
         <div class="media-body">
-        <h2>How Many Days it Takes to a Beneficiary Account</h2>
-        <img src="assets/images/blog/blog1.jpg" width="100%">
-        <p>Pursue pleasure rationally encounter se consequencess that are extremely painful or again is there anyone who loves or pursues or desires to obtain seds pain of itself because it is pain consequence seedpain of it itself then becausee is painfull agin and agin ut consequences that are itself ut extremely painful or agains it is there are or anyone wil get good financeenim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni...</p>
+        <h2><?= $heading ?></h2>
+        <img src="admin/uploads/blogs/<?= $image ?>" width="100%">
+        <!-- <h5 class="p-dark">Consulting Services are as designed to target your specific business needs and goals, including the following:</h5> -->
+        <p><?= $shortDesc ?></p>
         <br>
-        <a href="#">Read More</a>
+        <a href="<?= BASE_URL ?>blog-details.php?id='<?= $id ?>'">Read More</a>
       </div>
     </div>
-      </div><!----------box---------->
+      </div>
+      <?php
+          }
+        }
+      ?>    
 
 
     </div><!-------------------left-blog-------------->
     <div class="right-blog">
       <h4>Latest Blogs</h4>
-      <div class="box">
-        <h2>How Many Days it Takes to a Beneficiary Account</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
-          <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
-          </ul>
-      </div>
+      <?php
+      $result = mysqli_query($conn, "SELECT * FROM blogs");
 
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+              
+      while($row = mysqli_fetch_assoc($result)){
+        $timestamp = $row['blogDate'];
+        $fullDate = strtotime($timestamp);
+        $day = date('d', $fullDate);
+        $month = date('F', $fullDate);
+        $heading = $row['heading'];
+        $image = $row['image'];
+        $shortDesc = $row['shortDesc'];
+      ?>
       <div class="box">
-        <h2>Real Estate Consulting</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
+        <h2><?= $heading ?></h2>
+        <p><?= mb_strimwidth($row['description'], 0, 80) ?>
+          <a href="<?= BASE_URL ?>blog-details.php?id='<?= $id ?>'">Read More</a></p>
           <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
+            <li><i class="fa fa-comments-o"></i> <?= $day ?></li>
           </ul>
       </div>
-
-      <div class="box">
-        <h2>Real Estate Consulting</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
-          <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
-          </ul>
-      </div>
-
-      <div class="box">
-        <h2>How Many Days it Takes to a Beneficiary Account</h2>
-        <p>it is pain consequence seedpain of it itself then becausee is painfull...
-          <a href="#">Read More</a></p>
-          <ul>
-            <li><i class="fa fa-comments-o"></i> 28 Jun</li>
-          </ul>
-      </div>
+    <?php
+      }
+    }
+  
+    ?>
     </div><!-------------------left-blog-------------->
   </div>
 </section>

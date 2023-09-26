@@ -52,20 +52,18 @@
                 <td><?php echo $name ?></td>
                 <td><?php echo $email ?></td>
                 <td><?php echo $mobile ?></td>
-                <td><?php echo $jobdara['title']; ?></td>
+                <td><?php echo $row['title']; ?></td>
                 <td><?php echo getjobExperienced($experience); ?></td>
                 <td><?php echo $description ?></td>
-                <td><a href="?php echo $resume ?>" download="" alt=""><i class="fa fa-file"></i></a></td>
+                <td><a href="uploads/jobapplication/<?php echo $resume ?>" alt="" download><i class="fa fa-file"></i></a></td>
                 <td><a href="javascript:void(0)" onclick="deletejob(<?php echo $id ?>)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
               </tr>
             <?php
 
             $num++;}
         
-
             ?>
-
-              
+           
               
             </tbody>
           </table>

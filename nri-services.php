@@ -59,37 +59,53 @@
   </div>
 
 <div class="container">
-<div class="row">
-<div class="col-sm-5">
-<img src="assets/images/sub-menu-banner.jpg" width="100%">
-</div>
 
-<div class="col-sm-7">
-<h5 class="p-dark">NRI Services</h5>
-<p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
-<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-</div>
+
+<?php
+$result = mysqli_query($conn, "SELECT * FROM nri_service ORDER BY id DESC");
+
+      if(!$result){
+        die('query failed '.mysqli_error($conn));
+      }else{
+             
+	$iteration=1;
+	while($row = mysqli_fetch_assoc($result)){
+        $id = encryptor('encrypt', $row['id']);
+        $timestamp = $row['blogDate'];
+        $fullDate = strtotime($timestamp);
+        $day = date('d', $fullDate);
+        $month = date('F', $fullDate);
+     
+        $image = $row['large_image'];
+	  if($iteration % 2==0){
+		echo '<div class="row"><div class="col-sm-5">
+		<img src="'.ADMIN_ASSETS.'nri_services/'.$image.'" width="100%">
+		</div>
+		<div class="col-sm-7">
+		<h5 class="p-dark">'.$row['heading'].'</h5>
+		<p>'.$row['description'].'</p>
+		</div>
+		</div>
+		';
+	  }else{
+		echo '<div class="row"><div class="col-sm-7">
+		<h5 class="p-dark">'.$row['heading'].'</h5>
+		<p>'.$row['description'].'</p>
+		</div><div class="col-sm-5">
+		<img src="'.ADMIN_ASSETS.'nri_services/'.$image.'" width="100%">
+		</div>
+		</div>
+		';
+	  }
+       $iteration++;
+}
+}
+?>    
 </div>
 <hr>
-
-<div class="row">
-<div class="col-sm-7">
-<h5 class="p-dark">NRI Services</h5>
-<p>Letters of Intent, Lease and Contract Negotiations, Lease Administration, Portfolio Optimization and Management, Restructuring and Renegotiations, Renewals, Dispositions, Due Diligence, and Document Abstraction...</p>
-<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 </div>
-<div class="col-sm-5">
-<img src="assets/images/sub-menu-banner.jpg" width="100%">
-</div>
-
-
-</div>
-</div>
-
 </section>
 <!-- revolution slider close -->
-
-
 
 <?php include 'include/js-url.php'; ?>
 <?php include 'include/modal.php'; ?>

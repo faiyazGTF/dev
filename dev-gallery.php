@@ -1,5 +1,14 @@
 <?php include 'include/config.php'; ?>
-<?php include 'include/functions.php'; ?>
+<?php include 'include/functions.php';
+if(isset($_GET['id'])){
+  $id = $_GET['id'];
+
+ $gallery_category = mysqli_query($conn, "SELECT * FROM gallery_category WHERE id='$id'");
+if($gallery_category->num_rows >0){
+  $catdata=mysqli_fetch_assoc($gallery_category);
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,87 +62,43 @@
    </div>
 
 
+
 <section class="gall-activity all-heading">
   <div class="heading">
     <h6>Employee of the Month</h6>
-    <h4>Employee of the Month</h4>
+    <h4><?= $catdata['catname'] ?></h4>
   </div>
-
 
   <div class="inner-box">
     <select class="form-control filter-year">
-        <option>2021</option>
-        <option>2022</option>
-        <option>2022</option>
-        <option>2024</option>
-        <option>2025</option>
+        <option>2023</option>
     </select>
     <br><br>
   <div class="left-act">
   <div class="popup-gallery">
-    <div class="box-gall">
-    <a href="assets/images/life-at-dev/gallery/a.jpg" class="image" title="This is a image">
-        <img src="assets/images/life-at-dev/gallery/a.jpg" alt="Alt text">
-    </a>
-     <div class="h-gall-const"></div>
-    </div>
+    
+<?php
+ $gallery = mysqli_query($conn, "SELECT * FROM gallery WHERE catname='$id'");
 
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/b.jpg" class="image" title="This is a image">
-        <img src="assets/images/life-at-dev/gallery/c.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/tr.mp4" class="video" title="This is a video">
-        <img src="assets/images/life-at-dev/gallery/b.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/c.jpg" class="image" title="This is a image">
-        <img src="assets/images/life-at-dev/gallery/c.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/d.jpg" class="image" title="This is a image">
-      <img src="assets/images/life-at-dev/gallery/d.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
-
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/a.jpg" class="image" title="This is a image">
-      <img src="assets/images/life-at-dev/gallery/a.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
-
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/b.jpg" class="image" title="This is a image">
-      <img src="assets/images/life-at-dev/gallery/b.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
-    <div class="box-gall">
-      <a href="assets/images/life-at-dev/gallery/c.jpg" class="image" title="This is a image">
-      <img src="assets/images/life-at-dev/gallery/c.jpg" alt="Alt text">
-    </a>
-    <div class="h-gall-const"></div>
-    </div>
-
+  if($gallery->num_rows >0){
+    while($row = mysqli_fetch_assoc($gallery)){
+   
+   echo '<div class="box-gall">
+   <a href="'.ADMIN_URL.$row['image'].'" class="image" title="This is a image">
+   <img src="'.ADMIN_URL.$row['image'].'" alt="Alt text">
+   </a>
+   <div class="h-gall-const"></div>
+   </div>';
+  }
+}
+?>
   </div>
   </div>
-        </div>
+    </div>
 
 </section>
+
+
 <!-- revolution slider close -->
 
 

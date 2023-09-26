@@ -21,13 +21,13 @@
                         <input type="text" class="form-control" name="catname" id="catname">
 
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="">image</label>
                         <input type="file" name="image" onchange="imageValidation(this)" class="form-control" id="image">
                     </div>
 
-                    <button type="submit" class="btn btn-info addmetadetails" id="submit">Submit</button>
+                    <button type="submit" class="btn btn-info addmetadetails" id="gallery_submit">Submit</button>
 
                 </form>
 			</div>
