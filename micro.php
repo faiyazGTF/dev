@@ -520,12 +520,16 @@ if(!empty($_GET['page_url'])){
             <div class="col-sm-12 col-md-3 col-lg-2 second_col">
                 <h4>Quick Links </h4>
                 <ul>
-                    <li><a href="../../index.html" target="_blank">Home</a></li>
-                    <li><a href="../../about-us.html" target="_blank">About Us</a></li>
-                    <li><a href="../../contact-us.html" target="_blank">Contact Us</a></li>  
-                    <li><a href="../../privacy-policy.html" target="_blank">Privacy Policy</a></li> 
-                    <li><a href="../../disclaimer.html" target="_blank">Disclaimer</a></li>  
-                    <li><a href="../../termandcondition.html" target="_blank">Term &amp; Condition</a></li>   
+                <li><a href="index.php" target="_blank">Home</a></li>
+                    <li><a href="about-us.php" target="_blank">About Us</a></li>
+                    <li><a href="contact-us.php" target="_blank">Contact Us</a></li>  
+                    <li><a href="privacy-policy.php" target="_blank">Privacy Policy</a></li> 
+                    <li><a href="disclaimer.php" target="_blank">Disclaimer</a></li>  
+                    <li><a href="termandcondition.php" target="_blank">Term &amp; Condition</a></li>   
+                    <li><a href="news.php" target="_blank">News</a></li>
+                    <li><a href="our-jobs.php" target="_blank">Our Jobs</a></li>   
+                    <li><a href="share-cv.php" target="_blank">Share CV</a></li>   
+                    <li><a href="nri-services.php" target="_blank">NRI Services</a></li>     
                 </ul>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 third_col">
